@@ -79,22 +79,24 @@ main.add_command(constants_group)
 @main.command()
 def about():
     """Show information about astr0."""
-    click.echo(r"""
-    ╭─────────────────────────────────────────╮
-    │                                         │
-    │     ▄▀█ ▄▀▀ ▀█▀ █▀▄ ▄▀▄               │
-    │     █▀█ ▀▄▄  █  █▀▄ ▀▄▀               │
-    │                                         │
-    │     Astronomy Calculation Toolkit       │
-    │     ─────────────────────────────       │
-    │                                         │
-    │     Version: """ + __version__ + """                       │
-    │     License: MIT                        │
-    │                                         │
-    │     "Per aspera ad astra"               │
-    │     Through hardships to the stars      │
-    │                                         │
-    ╰─────────────────────────────────────────╯
+    click.echo(f"""
+    ╭───────────────────────────────────────╮
+    │                                       │
+    │       __ _ ___| |_ _ __ ___           │
+    │      / _` / __| __| '__/ _ \\          │
+    │     | (_| \\__ \\ |_| | | (_) |         │
+    │      \\__,_|___/\\__|_|  \\___/          │
+    │                                       │
+    │     Astronomy Calculation Toolkit     │
+    │     ─────────────────────────────     │
+    │                                       │
+    │     Version: {__version__:<25}│
+    │     License: MIT                      │
+    │                                       │
+    │     "Per aspera ad astra"             │
+    │     Through hardships to the stars    │
+    │                                       │
+    ╰───────────────────────────────────────╯
     """)
 
 

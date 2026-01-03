@@ -12,6 +12,10 @@ from astr0.cli.time_cmd import time_group
 from astr0.cli.coords_cmd import coords_group
 from astr0.cli.angles_cmd import angles_group
 from astr0.cli.constants_cmd import constants_group
+from astr0.cli.sun_cmd import sun_group
+from astr0.cli.observer_cmd import observer_group
+from astr0.cli.moon_cmd import moon_group
+from astr0.cli.vis_cmd import vis_group
 
 
 class AliasedGroup(click.Group):
@@ -31,6 +35,12 @@ class AliasedGroup(click.Group):
             'a': 'angles',
             'angle': 'angles',
             'const': 'constants',
+            's': 'sun',
+            'o': 'observer',
+            'obs': 'observer',
+            'm': 'moon',
+            'v': 'vis',
+            'visibility': 'vis',
         }
         
         if cmd_name in aliases:
@@ -74,6 +84,10 @@ main.add_command(time_group)
 main.add_command(coords_group)
 main.add_command(angles_group)
 main.add_command(constants_group)
+main.add_command(sun_group)
+main.add_command(observer_group)
+main.add_command(moon_group)
+main.add_command(vis_group)
 
 
 @main.command()

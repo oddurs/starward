@@ -16,7 +16,7 @@ A professional astronomy calculation toolkit with a soul. Built for astronomers,
 
 ---
 
-## 📋 v0.1 — "First Light"
+## 📋 v0.1 — "First Light" ✅
 
 The foundational release. Core infrastructure and essential calculations.
 
@@ -24,10 +24,10 @@ The foundational release. Core infrastructure and essential calculations.
 
 | Module | Description | Status |
 |--------|-------------|--------|
-| `time` | Julian dates, MJD, LST, epoch conversions | 🎯 |
-| `coords` | Coordinate transformations (ICRS, AltAz, Galactic, Ecliptic) | 🎯 |
-| `angles` | Angular separations, position angles, formatting | 🎯 |
-| `constants` | Astronomical constants with references | 🎯 |
+| `time` | Julian dates, MJD, LST, epoch conversions | ✅ |
+| `coords` | Coordinate transformations (ICRS, AltAz, Galactic, Ecliptic) | ✅ |
+| `angles` | Angular separations, position angles, formatting | ✅ |
+| `constants` | Astronomical constants with references | ✅ |
 
 ### Infrastructure
 
@@ -42,37 +42,64 @@ The foundational release. Core infrastructure and essential calculations.
 ```bash
 astr0 time now                    # Current time in all formats
 astr0 time convert <value>        # Convert between time systems
-astr0 coords transform <coords>   # Transform coordinates
-astr0 angles sep <c1> <c2>        # Angular separation
+astr0 coord convert <coords>      # Transform coordinates
+astr0 angle sep <c1> <c2>         # Angular separation
 astr0 --verbose <command>         # Show calculation steps
 astr0 --output json <command>     # JSON output
 ```
 
 ---
 
-## 🚀 v0.2 — "Steady Tracking"
+## 🚀 v0.2 — "Steady Tracking" ✅
 
 Position calculations and solar system awareness.
 
 ### New Modules
 
-| Module | Description |
-|--------|-------------|
-| `sun` | Solar position, sunrise/sunset, twilight |
-| `moon` | Lunar position, phases, illumination |
-| `observer` | Observer location management, horizon |
-| `visibility` | Object visibility, optimal viewing times |
+| Module | Description | Status |
+|--------|-------------|--------|
+| `sun` | Solar position, sunrise/sunset, twilight | ✅ |
+| `moon` | Lunar position, phases, illumination | ✅ |
+| `observer` | Observer location management, horizon | ✅ |
+| `visibility` | Object visibility, optimal viewing times | ✅ |
 
 ### Enhancements
 
-- Observer profile saving (~/.astr0/observers.toml)
-- LaTeX output option
-- Rise/set/transit calculations
-- Airmass calculations
+- [x] Observer profile saving (~/.astr0/observers.toml)
+- [x] LaTeX output option
+- [x] Rise/set/transit calculations
+- [x] Airmass calculations
+- [x] Twilight calculations (civil, nautical, astronomical)
+- [x] Moon phase prediction
+
+### CLI Commands (v0.2)
+
+```bash
+# Sun commands
+astr0 sun position                 # Current solar position
+astr0 sun rise --lat 51.5 --lon -0.1
+astr0 sun set --lat 51.5 --lon -0.1
+astr0 sun twilight astronomical --lat 51.5 --lon -0.1
+
+# Moon commands
+astr0 moon position                # Current lunar position
+astr0 moon phase                   # Current phase
+astr0 moon next full               # Next full moon
+
+# Observer commands
+astr0 observer add "Home" 40.7 -74.0
+astr0 observer list
+astr0 observer default "Home"
+
+# Visibility commands
+astr0 vis altitude "00h42m44s" "+41d16m09s" --lat 40.7 --lon -74.0
+astr0 vis transit "00h42m44s" "+41d16m09s" --lat 40.7 --lon -74.0
+astr0 vis airmass "00h42m44s" "+41d16m09s" --lat 40.7 --lon -74.0
+```
 
 ---
 
-## 🪐 v0.3 — "Planetary Motion"
+## 🪐 v0.3 — "Planetary Motion" 🔜
 
 Solar system ephemerides and orbital mechanics.
 
@@ -200,6 +227,28 @@ astr0/
 - **Roundtrip Tests**: Transform → inverse transform = identity
 - **CLI Tests**: Every command, every flag
 
+### Test Suite Structure (v0.2)
+
+```
+tests/
+├── conftest.py         # Shared fixtures and markers
+├── core/               # Core module tests
+│   ├── test_angles.py
+│   ├── test_coords.py
+│   ├── test_time.py
+│   ├── test_constants.py
+│   ├── test_sun.py
+│   ├── test_moon.py
+│   ├── test_observer.py
+│   └── test_visibility.py
+├── cli/                # CLI integration tests
+│   └── test_commands.py
+└── output/             # Formatter tests
+    └── test_formatters.py
+```
+
+**Current Status**: 200+ tests, validated against USNO, JPL, and Meeus
+
 ---
 
 ## 🌠 The Name
@@ -209,6 +258,19 @@ astr0/
 - The null hypothesis we test against
 - The first index (we're programmers, after all)
 - ∅ The empty set of bugs we aspire to
+
+---
+
+## 📈 Version History
+
+| Version | Codename | Status | Highlights |
+|---------|----------|--------|------------|
+| v0.1 | First Light | ✅ Complete | Time, coords, angles, constants |
+| v0.2 | Steady Tracking | ✅ Complete | Sun, moon, observer, visibility |
+| v0.3 | Planetary Motion | 🔜 Next | Planets, orbits, conjunctions |
+| v0.4 | Deep Sky | 📋 Planned | Catalogs, DSOs, star data |
+| v0.5 | Cosmological | 📋 Planned | Redshift, distances, cosmology |
+| v0.6 | Observatory Ready | 📋 Planned | Optics, imaging, scheduling |
 
 ---
 

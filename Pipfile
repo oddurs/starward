@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+click = ">=8.0"
+rich = ">=13.0"
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+hypothesis = "*"
+mypy = "*"
+ruff = "*"
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.8"

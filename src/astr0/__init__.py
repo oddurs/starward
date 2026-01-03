@@ -17,6 +17,13 @@ from astr0.core.coords import (
     transform_coords,
 )
 from astr0.core.constants import CONSTANTS
+from astr0.core.precision import (
+    PrecisionConfig,
+    PrecisionLevel,
+    get_precision,
+    set_precision,
+    precision_context,
+)
 
 __all__ = [
     # Version
@@ -37,4 +44,10 @@ __all__ = [
     "transform_coords",
     # Constants
     "CONSTANTS",
+    # Precision
+    "PrecisionConfig",
+    "PrecisionLevel",
+    "get_precision",
+    "set_precision",
+    "precision_context",
 ]

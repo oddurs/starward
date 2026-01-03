@@ -16,6 +16,7 @@ from astr0.cli.sun_cmd import sun_group
 from astr0.cli.observer_cmd import observer_group
 from astr0.cli.moon_cmd import moon_group
 from astr0.cli.vis_cmd import vis_group
+from astr0.core.precision import set_precision, PrecisionLevel
 
 
 class AliasedGroup(click.Group):
@@ -53,9 +54,13 @@ class AliasedGroup(click.Group):
 @click.option('--verbose', '-v', is_flag=True, help='Show calculation steps')
 @click.option('--json', 'json_output', is_flag=True, help='Output in JSON format')
 @click.option('--output', '-o', type=click.Choice(['plain', 'json', 'latex']), default='plain', help='Output format')
+@click.option('--precision', '-p', 
+              type=click.Choice(['compact', 'display', 'standard', 'high', 'full']),
+              default='standard',
+              help='Output precision level (default: standard)')
 @click.version_option(__version__, prog_name='astr0')
 @click.pass_context
-def main(ctx, verbose: bool, json_output: bool, output: str):
+def main(ctx, verbose: bool, json_output: bool, output: str, precision: str):
     """
     astr0 — Astronomy Calculation Toolkit
     
@@ -75,11 +80,23 @@ def main(ctx, verbose: bool, json_output: bool, output: str):
     \b
     Aliases:
         time → t | coords → c | angles → a | constants → const
+    
+    \b
+    Precision Levels:
+        compact  (2)  - Quick reference
+        display  (4)  - Readable output  
+        standard (6)  - Default precision
+        high    (10)  - Research applications
+        full    (15)  - Maximum precision
     """
     ctx.ensure_object(dict)
     ctx.obj['verbose'] = verbose
     # --json flag overrides --output
     ctx.obj['output'] = 'json' if json_output else output
+    ctx.obj['precision'] = precision
+    
+    # Set global precision
+    set_precision(precision)
 
 
 # Register command groups

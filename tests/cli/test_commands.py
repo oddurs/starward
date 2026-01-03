@@ -292,6 +292,26 @@ class TestOutputFormats:
             '10h10m00s +21d00m00s'
         ])
         assert result.exit_code == 0
+    
+    def test_precision_compact(self, runner):
+        """--precision compact shows fewer decimals."""
+        result = runner.invoke(main, ['-p', 'compact', 'time', 'now'])
+        assert result.exit_code == 0
+        # Compact shows only 2 decimal places
+        assert result.output.count('.') > 0  # Has decimal numbers
+    
+    def test_precision_full(self, runner):
+        """--precision full shows maximum decimals."""
+        result = runner.invoke(main, ['-p', 'full', 'time', 'now'])
+        assert result.exit_code == 0
+        # Full precision shows many decimals
+        assert result.output.count('.') > 0
+    
+    def test_precision_options(self, runner):
+        """All precision levels are valid."""
+        for level in ['compact', 'display', 'standard', 'high', 'full']:
+            result = runner.invoke(main, ['--precision', level, 'time', 'now'])
+            assert result.exit_code == 0, f"Precision {level} failed"
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

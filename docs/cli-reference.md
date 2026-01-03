@@ -13,6 +13,7 @@ These options apply to all commands and must appear **before** the subcommand:
 | `--verbose` | `-v` | Show calculation steps |
 | `--output` | `-o` | Output format: `plain` (default), `json`, or `latex` |
 | `--json` | | Shortcut for `--output json` |
+| `--precision` | `-p` | Output precision level (see below) |
 | `--version` | | Show version and exit |
 | `--help` | | Show help and exit |
 
@@ -21,6 +22,7 @@ These options apply to all commands and must appear **before** the subcommand:
 # ✓ Correct
 astr0 --json time now
 astr0 --verbose sun position
+astr0 -p full time now
 
 # ✗ Wrong (won't work)
 astr0 time now --json
@@ -30,6 +32,38 @@ astr0 time now --json
 ```bash
 astr0 --verbose --output json time now
 astr0 --json sun rise --lat 40.7 --lon -74.0
+astr0 -p high angle sep "10h +30d" "11h +31d"
+```
+
+---
+
+## Precision Levels
+
+Control the display precision of numerical output. **All internal calculations use full IEEE 754 double precision** — this only affects how results are displayed.
+
+| Level | Decimals | Use Case |
+|-------|----------|----------|
+| `compact` | 2 | Quick reference, minimal output |
+| `display` | 4 | Human-readable, casual use |
+| `standard` | 6 | Default precision for most work |
+| `high` | 10 | Research applications |
+| `full` | 15 | Maximum IEEE 754 precision |
+
+```bash
+# Compact: 0.26
+astr0 -p compact time now
+
+# Standard (default): 0.260077
+astr0 time now
+
+# Full precision: 0.260076993954923
+astr0 -p full time now
+```
+
+You can also set precision via environment variable:
+```bash
+export ASTR0_PRECISION=high
+astr0 time now  # Uses high precision
 ```
 
 ---

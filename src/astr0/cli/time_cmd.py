@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from astr0.core.time import JulianDate, jd_now, jd_to_mjd
+from astr0.core.precision import get_precision
 from astr0.verbose import VerboseContext
 from astr0.output.formatters import Result, format_output
 
@@ -37,6 +38,7 @@ def now(ctx):
     output_fmt = ctx.obj.get('output', 'plain')
     
     vctx = VerboseContext() if verbose else None
+    prec = get_precision()
     
     jd = jd_now()
     dt = datetime.now(timezone.utc)
@@ -58,18 +60,34 @@ def now(ctx):
         gmst_h = int(gmst)
         gmst_m = int((gmst - gmst_h) * 60)
         gmst_s = ((gmst - gmst_h) * 60 - gmst_m) * 60
-        gmst_str = f"{gmst_h:02d}h {gmst_m:02d}m {gmst_s:05.2f}s"
+        gmst_str = f"{gmst_h:02d}h {gmst_m:02d}m {gmst_s:05.{prec.time_seconds}f}s"
         
+        d = prec.decimals
+        # Format values
+        jd_str = f"{jd.jd:.{d}f}"
+        mjd_str = f"{jd.mjd:.{d}f}"
+        t_str = f"{jd.t_j2000:.{d}f}"
+        utc_str = dt.strftime('%Y-%m-%d %H:%M:%S')
+        
+        # Calculate width needed (min 42 for header)
+        max_val = max(len(jd_str), len(mjd_str), len(t_str), len(gmst_str), len(utc_str))
+        width = max(42, max_val + 16)  # 16 for label and padding
+        inner = width - 4  # Account for "│  " and " │"
+        
+        def row(label, value):
+            return f"│  {label:<12} {value:>{inner - 14}} │"
+        
+        border = "─" * (width - 2)
         click.echo(f"""
-  ╭────────────────────────────────────────────╮
-  │  Current Astronomical Time                 │
-  ├────────────────────────────────────────────┤
-  │  UTC:          {dt.strftime('%Y-%m-%d %H:%M:%S'):>26} │
-  │  Julian Date:  {jd.jd:>26.6f} │
-  │  Modified JD:  {jd.mjd:>26.6f} │
-  │  T (J2000):    {jd.t_j2000:>26.10f} │
-  │  GMST:         {gmst_str:>26} │
-  ╰────────────────────────────────────────────╯
+  ╭{border}╮
+  │  {'Current Astronomical Time':<{inner}} │
+  ├{border}┤
+  {row('UTC:', utc_str)}
+  {row('Julian Date:', jd_str)}
+  {row('Modified JD:', mjd_str)}
+  {row('T (J2000):', t_str)}
+  {row('GMST:', gmst_str)}
+  ╰{border}╯
 """)
         if vctx:
             click.echo(vctx.format_steps())

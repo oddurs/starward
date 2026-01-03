@@ -63,15 +63,8 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     # Build summary
     terminalreporter.write_line("")
     terminalreporter.write_line("─" * 60)
-    
-    if failed == 0 and errors == 0:
-        terminalreporter.write_line("")
-        terminalreporter.write_line("  ✦ All tests passed! Per aspera ad astra ✦", green=True, bold=True)
-    else:
-        terminalreporter.write_line("")
-        terminalreporter.write_line("  ✗ Some tests failed", red=True, bold=True)
-    
     terminalreporter.write_line("")
+    
     terminalreporter.write_line(f"  {'Tests:':<12} {total:>6}")
     
     if passed > 0:

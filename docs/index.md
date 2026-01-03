@@ -1,4 +1,11 @@
+
 # astr0 Documentation
+---
+
+## Contributing
+
+Want to help make astr0 better? See our [CONTRIBUTING.md](../CONTRIBUTING.md) for how to get started, coding standards, and the contribution process. All contributions—code, docs, tests, ideas—are welcome!
+
 
 > *"The cosmos is within us. We are made of star-stuff."* — Carl Sagan
 

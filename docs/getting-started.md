@@ -14,7 +14,7 @@ pip install astr0
 
 ### For Development
 
-If you want to contribute or explore the source code:
+If you want to contribute (thank you!) or explore the source code, please first read our [CONTRIBUTING.md](../CONTRIBUTING.md) for guidelines and the recommended workflow:
 
 ```bash
 git clone https://github.com/yourusername/astr0

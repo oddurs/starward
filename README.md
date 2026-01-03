@@ -350,16 +350,25 @@ pytest -m "not slow"
 
 ---
 
+
 ## Contributing
 
-Contributions welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+We welcome contributions of all kinds—code, documentation, tests, and ideas! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for the latest guidelines and step-by-step instructions.
 
-Areas especially seeking help:
+**How to get started:**
+- Fork the repo and create a branch from `master`
+- Follow the code style and testing standards (see CONTRIBUTING.md)
+- Run all tests before submitting a pull request
+- For major changes, open an issue to discuss your idea first
+
+**Areas especially seeking help:**
 - Higher-precision algorithms (VSOP87, ELP/MPP02)
 - Planetary ephemerides
 - Additional coordinate systems
 - Documentation improvements
 - Test coverage expansion
+
+We strive to make contributing easy and rewarding for everyone. Thank you for helping make astr0 shine brighter!
 
 ---
 

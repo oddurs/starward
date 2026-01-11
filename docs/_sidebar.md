@@ -24,6 +24,7 @@
   - [Angles](angles.md)
   - [Sun](sun.md)
   - [Moon](moon.md)
+  - [Planets](planets.md)
   - [Observer](observer.md)
   - [Visibility](visibility.md)
   - [Constants](constants.md)

@@ -112,6 +112,20 @@ astr0 moon next full
 astr0 moon rise --lat 40.7 --lon -74.0
 ```
 
+### Planets
+
+```bash
+# Current position of a planet
+astr0 planets position mars
+
+# All planets summary
+astr0 planets all
+
+# Planet rise/set/transit
+astr0 planets rise jupiter --lat 40.7 --lon -74.0
+astr0 planets transit saturn --lat 40.7 --lon -74.0
+```
+
 ### Coordinates
 
 ```bash
@@ -180,9 +194,14 @@ astr0 const search solar
 | **Observer** | Location management, TOML persistence, timezone support |
 | **Visibility** | Airmass, transit, rise/set, moon separation, night detection |
 
+### ✦ v0.3 "Planetary Motion"
+
+| Module | Capabilities |
+|--------|-------------|
+| **Planets** | Mercury–Neptune positions, magnitude, elongation, rise/set/transit |
+
 ### Coming Soon
 
-- **v0.3**: Planets (Mercury–Neptune), ecliptic coordinates
 - **v0.4**: Catalog lookups (Messier, NGC, Hipparcos)
 - **v0.5**: IAU 2006 precession/nutation, aberration
 
@@ -200,6 +219,7 @@ from astr0.core.sun import sun_position, sunrise, sunset
 from astr0.core.moon import moon_phase, next_phase, MoonPhase
 from astr0.core.observer import Observer
 from astr0.core.visibility import airmass, target_altitude, compute_visibility
+from astr0.core.planets import Planet, planet_position, all_planet_positions
 
 # Time
 jd = jd_now()
@@ -229,6 +249,11 @@ next_full = next_phase(jd, MoonPhase.FULL_MOON)
 alt = target_altitude(m31, greenwich, jd)
 X = airmass(alt)
 vis = compute_visibility(m31, greenwich, jd)
+
+# Planets
+mars = planet_position(Planet.MARS, jd)
+print(f"Mars: RA {mars.ra.format_hms()}, Mag {mars.magnitude:+.1f}")
+all_planets = all_planet_positions(jd)
 ```
 
 ---
@@ -306,6 +331,7 @@ For speed, astr0 supports command aliases:
 | `astr0 const` | `astr0 k` |
 | `astr0 sun` | `astr0 s` |
 | `astr0 moon` | `astr0 m` |
+| `astr0 planets` | `astr0 p` |
 | `astr0 observer` | `astr0 o` |
 | `astr0 vis` | `astr0 v` |
 
@@ -342,7 +368,7 @@ pytest tests/core/test_sun.py
 pytest -m "not slow"
 ```
 
-200+ tests validate calculations against authoritative sources including:
+500+ tests validate calculations against authoritative sources including:
 - US Naval Observatory
 - JPL Horizons
 - IAU SOFA library

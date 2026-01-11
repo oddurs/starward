@@ -99,23 +99,39 @@ astr0 vis airmass "00h42m44s" "+41d16m09s" --lat 40.7 --lon -74.0
 
 ---
 
-## 🪐 v0.3 — "Planetary Motion" 🔜
+## 🪐 v0.3 — "Planetary Motion" ✅
 
-Solar system ephemerides and orbital mechanics.
+Solar system ephemerides and planetary positions.
 
 ### New Modules
 
-| Module | Description |
-|--------|-------------|
-| `planets` | Planetary positions (VSOP87) |
-| `orbits` | Orbital elements, Kepler's laws |
-| `conjunctions` | Planetary conjunctions, oppositions |
+| Module | Description | Status |
+|--------|-------------|--------|
+| `planets` | Planetary positions (Meeus algorithms) | ✅ |
 
-### Enhancements
+### Features
 
-- Ephemeris generation (tabular output)
-- Orbital diagrams (ASCII/SVG)
-- Two-line element (TLE) parsing for satellites
+- [x] Mercury through Neptune position calculations
+- [x] Equatorial coordinates (RA/Dec)
+- [x] Distance from Earth and Sun
+- [x] Apparent magnitude calculations
+- [x] Elongation from Sun
+- [x] Phase/illumination percentage
+- [x] Rise/set/transit times for planets
+
+### CLI Commands (v0.3)
+
+```bash
+# Planet positions
+astr0 planets position mars          # Single planet position
+astr0 planets all                    # All planets summary
+
+# Planet visibility
+astr0 planets rise jupiter --lat 40.7 --lon -74.0
+astr0 planets set saturn --lat 40.7 --lon -74.0
+astr0 planets transit jupiter --lat 40.7 --lon -74.0
+astr0 planets altitude mars --lat 40.7 --lon -74.0
+```
 
 ---
 
@@ -227,7 +243,7 @@ astr0/
 - **Roundtrip Tests**: Transform → inverse transform = identity
 - **CLI Tests**: Every command, every flag
 
-### Test Suite Structure (v0.2)
+### Test Suite Structure (v0.3)
 
 ```
 tests/
@@ -240,14 +256,15 @@ tests/
 │   ├── test_sun.py
 │   ├── test_moon.py
 │   ├── test_observer.py
-│   └── test_visibility.py
+│   ├── test_visibility.py
+│   └── test_planets.py
 ├── cli/                # CLI integration tests
 │   └── test_commands.py
 └── output/             # Formatter tests
     └── test_formatters.py
 ```
 
-**Current Status**: 200+ tests, validated against USNO, JPL, and Meeus
+**Current Status**: 500+ tests, validated against USNO, JPL Horizons, IAU SOFA, and Meeus
 
 ---
 
@@ -267,7 +284,7 @@ tests/
 |---------|----------|--------|------------|
 | v0.1 | First Light | ✅ Complete | Time, coords, angles, constants |
 | v0.2 | Steady Tracking | ✅ Complete | Sun, moon, observer, visibility |
-| v0.3 | Planetary Motion | 🔜 Next | Planets, orbits, conjunctions |
+| v0.3 | Planetary Motion | ✅ Complete | Planets (Mercury–Neptune) |
 | v0.4 | Deep Sky | 📋 Planned | Catalogs, DSOs, star data |
 | v0.5 | Cosmological | 📋 Planned | Redshift, distances, cosmology |
 | v0.6 | Observatory Ready | 📋 Planned | Optics, imaging, scheduling |

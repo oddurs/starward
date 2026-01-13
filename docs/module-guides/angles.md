@@ -84,7 +84,7 @@ astr0 angles sep "10h30m +30d" "10h35m +31d"
 ```
 
 Output:
-```
+```text
 Point 1: 10ʰ 30ᵐ 00.00ˢ 30° 00′ 00.00″
 Point 2: 10ʰ 35ᵐ 00.00ˢ 31° 00′ 00.00″
 ─────────────────────────────────────────────
@@ -114,7 +114,7 @@ This formula is numerically stable for any separation, from 0° to 180°.
 astr0 --verbose angles sep "10h +30d" "11h +31d"
 ```
 
-```
+```text
 ┌─ Input coordinates
 │  Point 1: RA = 10ʰ 00ᵐ 00.00ˢ, Dec = 30° 00′ 00.00″
 │  Point 2: RA = 11ʰ 00ᵐ 00.00ˢ, Dec = 31° 00′ 00.00″
@@ -166,7 +166,7 @@ astr0 angles pa "10h30m +30d" "10h35m +31d"
 ```
 
 Output:
-```
+```text
 Position Angle: 32.45° (N through E)
 ```
 

@@ -114,7 +114,7 @@ astr0 coords transform "12h30m +45d" --to galactic
 ```
 
 Output:
-```
+```text
 Input (ICRS): 12h30m +45d
 ─────────────────────────────────────────────
 Output (Galactic):
@@ -186,7 +186,7 @@ astr0 coords transform "12h30m +45d" --to altaz --lat 34.05 --lon -118.25
 This shows where the object appears in the sky from Los Angeles right now.
 
 Output:
-```
+```text
 Input (ICRS): 12h30m +45d
 ─────────────────────────────────────────────
 Output (Horizontal):

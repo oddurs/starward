@@ -55,7 +55,7 @@ astr0 time now
 ```
 
 Output:
-```
+```text
 ╭────────────────────────────────────────────╮
 │  Current Astronomical Time                 │
 ├────────────────────────────────────────────┤
@@ -74,7 +74,7 @@ astr0 time convert 2460000.5
 ```
 
 Output:
-```
+```text
 JD 2460000.500000 = 2023-02-25 00:00:00 UTC
 ```
 
@@ -110,7 +110,7 @@ astr0 time convert 60000 --from mjd
 ```
 
 Output:
-```
+```text
 MJD 60000.000000 = JD 2460000.500000 = 2023-02-25 00:00:00 UTC
 ```
 
@@ -174,7 +174,7 @@ astr0 time lst -- -118.25
 (The `--` tells the CLI that `-118.25` is a value, not a flag.)
 
 Output:
-```
+```text
 Longitude:    -118.2500° (W)
 Julian Date:  2461043.510878
 ─────────────────────────────────────────────
@@ -196,16 +196,16 @@ astr0 --verbose time now
 
 You'll see the calculation using the IAU 2006 formula:
 
-```
+```text
 ┌─ Calculate GMST
 │  T = (JD - 2451545.0) / 36525 = 0.26005504...
-│  
-│  GMST (degrees) = 280.46061837 
+│
+│  GMST (degrees) = 280.46061837
 │                 + 360.98564736629 × D
 │                 + 0.000387933 × T²
 │                 − T³/38710000
 │  where D = JD - 2451545.0
-│  
+│
 │  GMST = 280.46061837 + 342152.4... + ...
 │       = 106.4583...° = 7.097h
 └────────────────────────────────────────

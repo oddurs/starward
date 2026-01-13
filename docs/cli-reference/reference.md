@@ -218,7 +218,7 @@ astr0 coords transform COORDINATES --to SYSTEM [options]
 | `--jd` | No | Current | Julian Date (for altaz) |
 
 **Coordinate formats accepted**:
-```
+```text
 "12h30m45s +45d30m00s"    # HMS/DMS
 "12:30:45 +45:30:00"      # Colon notation
 "187.6875 45.5"           # Decimal degrees
@@ -258,7 +258,7 @@ astr0 coords parse "12h30m45.2s -45d30m15s"
 ```
 
 **Output**:
-```
+```text
 Parsed Coordinates:
   RA:  12h 30m 45.20s = 187.6883°
   Dec: -45° 30′ 15.00″ = -45.5042°
@@ -290,7 +290,7 @@ astr0 angles sep "10h30m +30d" "10h35m +31d"
 ```
 
 **Output**:
-```
+```text
 Angular Separation:
   1° 17′ 12.34″
   = 1.28676°
@@ -326,7 +326,7 @@ astr0 angles pa "10h30m +30d" "10h35m +31d"
 ```
 
 **Output**:
-```
+```text
 Position Angle: 32.45° (N through E)
 ```
 

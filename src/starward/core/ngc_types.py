@@ -2,7 +2,35 @@
 NGC catalog data types and constants.
 
 This module defines the NGCObject dataclass and object type constants
-for the New General Catalogue of deep sky objects.
+for the New General Catalogue (NGC) of deep sky objects.
+
+The NGC was compiled by John Louis Emil Dreyer in 1888 and contains
+7,840 objects including galaxies, star clusters, and nebulae. It remains
+one of the most widely used catalogs for amateur and professional astronomy.
+
+Historical Background:
+    The NGC is a revision and expansion of John Herschel's General Catalogue
+    of Nebulae and Clusters (GC, 1864), which itself built upon the work of
+    his father William Herschel. Many NGC objects were discovered using
+    large reflecting telescopes in the 18th and 19th centuries.
+
+Coordinate System:
+    All coordinates in this module use the J2000.0 epoch of the International
+    Celestial Reference System (ICRS). Right ascension (RA) is given in decimal
+    hours (0-24h), and declination (Dec) in decimal degrees (-90° to +90°).
+
+Object Types:
+    NGC objects span a wide range of astronomical phenomena:
+    - Galaxies: Island universes containing billions of stars
+    - Star Clusters: Gravitationally bound groups of stars
+    - Nebulae: Clouds of gas and dust, some stellar nurseries, others remnants
+    - Historical artifacts: Some entries are duplicates or non-existent objects
+
+Example:
+    >>> from starward.core.ngc_types import NGCObject, NGC_TYPE_NAMES
+    >>> obj = NGCObject.from_dict({'number': 7000, 'ra_hours': 20.98, ...})
+    >>> print(obj.type_name)
+    Emission Nebula
 """
 
 from __future__ import annotations
@@ -14,37 +42,66 @@ from typing import Optional
 # =============================================================================
 # Object Type Constants
 # =============================================================================
+#
+# Deep-sky objects are classified by their physical nature. Understanding these
+# classifications helps observers know what to expect visually and scientifically.
 
-# Primary galaxy types
+# -----------------------------------------------------------------------------
+# GALAXIES - Massive systems of stars, gas, dust, and dark matter
+# -----------------------------------------------------------------------------
+# Galaxies are "island universes" containing billions to trillions of stars.
+# They come in various morphologies: spiral (like our Milky Way), elliptical,
+# and irregular. The NGC contains thousands of galaxies, particularly in the
+# Virgo Cluster region visible in spring skies.
+
 GALAXY = "galaxy"
-GALAXY_PAIR = "galaxy_pair"
-GALAXY_GROUP = "galaxy_group"
-GALAXY_TRIPLE = "galaxy_triple"
+GALAXY_PAIR = "galaxy_pair"      # Two galaxies in gravitational interaction
+GALAXY_GROUP = "galaxy_group"    # Small group of gravitationally bound galaxies
+GALAXY_TRIPLE = "galaxy_triple"  # Three interacting galaxies
 
-# Star clusters
-GLOBULAR_CLUSTER = "globular_cluster"
-OPEN_CLUSTER = "open_cluster"
-STAR_CLUSTER = "star_cluster"
-CLUSTER_NEBULA = "cluster_nebula"
+# -----------------------------------------------------------------------------
+# STAR CLUSTERS - Gravitationally bound groups of stars
+# -----------------------------------------------------------------------------
+# Clusters are excellent targets for amateur astronomers and reveal
+# stellar evolution in action.
 
-# Nebulae
-PLANETARY_NEBULA = "planetary_nebula"
-EMISSION_NEBULA = "emission_nebula"
-REFLECTION_NEBULA = "reflection_nebula"
-HII_REGION = "hii_region"
-SUPERNOVA_REMNANT = "supernova_remnant"
-DARK_NEBULA = "dark_nebula"
+GLOBULAR_CLUSTER = "globular_cluster"  # Ancient, dense, spherical clusters
+                                       # (100,000+ stars, 10-13 billion years old)
+OPEN_CLUSTER = "open_cluster"          # Young, loose clusters in the galactic disk
+                                       # (tens to thousands of stars, <1 billion years)
+STAR_CLUSTER = "star_cluster"          # General cluster classification
+CLUSTER_NEBULA = "cluster_nebula"      # Cluster embedded in nebulosity (stellar nursery)
 
-# Stellar objects
-ASTERISM = "asterism"
-DOUBLE_STAR = "double_star"
-STAR = "star"
+# -----------------------------------------------------------------------------
+# NEBULAE - Clouds of gas and dust in interstellar space
+# -----------------------------------------------------------------------------
+# Nebulae represent different stages of stellar life cycles, from star birth
+# in emission nebulae to stellar death in planetary nebulae and supernova remnants.
 
-# Other
-QUASAR = "quasar"
-NONEXISTENT = "nonexistent"
-DUPLICATE = "duplicate"
-UNKNOWN = "unknown"
+PLANETARY_NEBULA = "planetary_nebula"    # Shells ejected by dying Sun-like stars
+                                         # (nothing to do with planets - historical misnomer)
+EMISSION_NEBULA = "emission_nebula"      # Hot gas glowing from UV radiation of nearby stars
+REFLECTION_NEBULA = "reflection_nebula"  # Dust clouds reflecting starlight (appear blue)
+HII_REGION = "hii_region"                # Ionized hydrogen regions - active star formation
+SUPERNOVA_REMNANT = "supernova_remnant"  # Expanding debris from massive star explosions
+DARK_NEBULA = "dark_nebula"              # Dense dust clouds blocking background light
+
+# -----------------------------------------------------------------------------
+# STELLAR OBJECTS - Individual stars and stellar groupings
+# -----------------------------------------------------------------------------
+
+ASTERISM = "asterism"      # Visual star patterns not gravitationally bound
+DOUBLE_STAR = "double_star"  # Binary stars or optical doubles
+STAR = "star"              # Single stars (some NGC entries are just bright stars)
+
+# -----------------------------------------------------------------------------
+# OTHER CATEGORIES - Including historical artifacts
+# -----------------------------------------------------------------------------
+
+QUASAR = "quasar"          # Quasi-stellar objects - extremely distant active galaxies
+NONEXISTENT = "nonexistent"  # Historical errors - object doesn't exist at position
+DUPLICATE = "duplicate"      # Duplicate entry of another NGC object
+UNKNOWN = "unknown"          # Classification uncertain
 
 # All valid NGC object types
 NGC_OBJECT_TYPES = [

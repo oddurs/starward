@@ -1,0 +1,11 @@
+// Search styles
+
+.DocSearch-Button {
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--ifm-global-border-color);
+  background: var(--ifm-background-surface-color);
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+  }
+}

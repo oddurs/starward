@@ -1,0 +1,101 @@
+// Base HTML elements
+
+// Lists
+.markdown ul,
+.markdown ol {
+  margin-bottom: var(--space-md);
+  padding-left: 1.5em;
+}
+
+.markdown li {
+  margin-bottom: var(--space-xs);
+  line-height: var(--ifm-line-height-base);
+}
+
+.markdown li > p {
+  margin-bottom: var(--space-xs);
+}
+
+.markdown li > ul,
+.markdown li > ol {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+// Horizontal rules - Tufte style
+.markdown hr {
+  border: none;
+  border-top: 1px solid var(--ifm-hr-border-color);
+  margin: var(--space-xl) 0;
+}
+
+// Links - Tufte style
+.markdown a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    text-decoration: none;
+    border-bottom-color: var(--ifm-link-hover-color);
+  }
+}
+
+// Blockquotes - Tufte style
+blockquote {
+  background: transparent;
+  border-left: 2px solid var(--ifm-hr-border-color);
+  border-radius: 0;
+  padding: 0 0 0 var(--space-md);
+  margin: var(--space-md) 0;
+  font-style: italic;
+  color: var(--ifm-menu-color);
+
+  p {
+    margin-bottom: var(--space-sm);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Citation
+  cite,
+  footer {
+    font-style: normal;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: var(--space-sm);
+
+    &::before {
+      content: '— ';
+    }
+  }
+}
+
+// Task lists - GFM style
+.markdown ul.contains-task-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.markdown li.task-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  > input[type='checkbox'] {
+    margin-top: 0.35rem;
+    accent-color: var(--ifm-color-primary);
+  }
+
+  &:has(input:checked) {
+    color: var(--ifm-menu-color);
+  }
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}

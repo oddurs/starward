@@ -1,0 +1,35 @@
+// Table styles - horizontal lines only
+
+.markdown table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-md);
+  font-size: 0.95rem;
+}
+
+.markdown th,
+.markdown td {
+  border: none;
+  border-bottom: 1px solid var(--ifm-global-border-color);
+  padding: 0.6rem 0.9rem;
+  line-height: 1.5;
+  color: var(--ifm-font-color-base);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.markdown th {
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid var(--ifm-global-border-color);
+}
+
+// Remove alternating row colors
+.markdown tbody tr:nth-child(odd) td,
+.markdown tbody tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.markdown tbody tr:hover td {
+  background: rgba(34, 138, 150, 0.08);
+}

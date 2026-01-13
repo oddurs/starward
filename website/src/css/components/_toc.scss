@@ -1,0 +1,14 @@
+// Table of Contents styles
+
+.table-of-contents {
+  font-size: 0.85rem;
+}
+
+.table-of-contents__link {
+  color: var(--ifm-font-color-base);
+
+  &--active {
+    color: var(--ifm-color-primary);
+    font-weight: 500;
+  }
+}

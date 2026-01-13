@@ -1,0 +1,20 @@
+// Announcement bar styles
+
+div[class*='announcementBar'] {
+  height: auto;
+  background: linear-gradient(90deg, var(--ifm-color-primary-darker) 0%, var(--ifm-color-primary) 100%);
+}
+
+div[class*='announcementBarContent'] {
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  a {
+    color: var(--ifm-font-color-base);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--ifm-color-primary-lightest);
+    }
+  }
+}

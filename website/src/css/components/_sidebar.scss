@@ -1,0 +1,71 @@
+// Sidebar styles
+
+:root {
+  --doc-sidebar-width: 280px;
+  --ifm-menu-color: #e6eaef;
+  --ifm-menu-color-active: var(--ifm-color-primary-light);
+  --ifm-menu-color-background-active: rgba(34, 138, 150, 0.15);
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.04);
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-global-border-color);
+}
+
+.menu__list-item {
+  margin-right: 0.5rem;
+}
+
+.menu__link {
+  font-size: 0.9rem;
+  border-radius: var(--ifm-global-radius);
+  transition: background-color 0.15s ease, color 0.15s ease;
+  color: var(--ifm-font-color-base);
+
+  &--sublist-caret::after {
+    background-size: 1.5rem 1.5rem;
+  }
+
+  // Category labels
+  &--sublist {
+    font-weight: 600;
+    color: #c5d0db;
+  }
+}
+
+.menu__list-item-collapsible:hover {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+// Collapse sidebar button
+.collapseSidebarButton_PEFL,
+button[class*='collapseSidebarButton'] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  min-height: 40px !important;
+  padding: 10px !important;
+
+  svg {
+    width: 20px !important;
+    height: 20px !important;
+    stroke-width: 1.5;
+    display: block !important;
+    overflow: visible !important;
+  }
+}
+
+// Content area
+.main-wrapper {
+  background: var(--ifm-background-color);
+}
+
+article {
+  max-width: 100%;
+}

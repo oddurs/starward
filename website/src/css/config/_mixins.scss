@@ -1,0 +1,27 @@
+// Reusable mixins
+
+// Smooth transitions
+@mixin transition($properties: all, $duration: 0.15s, $easing: ease) {
+  transition: $properties $duration $easing;
+}
+
+// Focus visible outline
+@mixin focus-outline {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+// Hide scrollbar
+@mixin hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+// Text truncate
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

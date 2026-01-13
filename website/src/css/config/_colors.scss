@@ -1,0 +1,37 @@
+// Color palette - Absent Contrast theme
+// Primary teal palette
+:root {
+  --ifm-color-primary-lightest: #addbbc;
+  --ifm-color-primary-lighter: #8fd4d6;
+  --ifm-color-primary-light: #61bcc6;
+  --ifm-color-primary: #228a96;
+  --ifm-color-primary-dark: #1d7680;
+  --ifm-color-primary-darker: #18626a;
+  --ifm-color-primary-darkest: #124d54;
+
+  // Backgrounds
+  --ifm-background-color: #0e1114;
+  --ifm-background-surface-color: #0e1114;
+  --custom-background-color-diff: #12161a;
+
+  // Text colors
+  --ifm-heading-color: #addbbc;
+  --ifm-font-color-base: #e6eaef;
+
+  // Links
+  --ifm-link-color: var(--ifm-color-primary-light);
+  --ifm-link-hover-color: var(--ifm-color-primary-lightest);
+  --ifm-link-hover-decoration: underline;
+
+  // Borders
+  --ifm-global-border-color: #2a3138;
+  --ifm-hr-border-color: #3a454e;
+  --ifm-toc-border-color: #2a3138;
+
+  // Cards
+  --ifm-card-background-color: #12161a;
+  --ifm-card-border-radius: 6px;
+
+  // Global
+  --ifm-global-radius: 4px;
+}

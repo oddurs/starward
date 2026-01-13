@@ -1,0 +1,22 @@
+// Pagination styles
+
+.pagination-nav__link {
+  border: 1px solid var(--ifm-global-border-color);
+  border-radius: var(--ifm-global-radius);
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: var(--ifm-color-primary);
+  }
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ADDBBC !important;
+}
+
+.pagination-nav__label {
+  color: var(--ifm-font-color-base);
+}

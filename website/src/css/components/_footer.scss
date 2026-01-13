@@ -1,0 +1,35 @@
+// Footer styles
+
+:root {
+  --ifm-footer-background-color: #0C0F12;
+  --ifm-footer-color: #e6eaef;
+  --ifm-footer-link-color: #e6eaef;
+  --ifm-footer-title-color: var(--ifm-heading-color);
+}
+
+.footer {
+  background: #0C0F12 !important;
+  box-shadow: none;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.footer__title {
+  color: var(--ifm-heading-color) !important;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer__link-item {
+  color: var(--ifm-font-color-base) !important;
+  font-size: 0.9rem;
+
+  &:hover {
+    color: var(--ifm-heading-color) !important;
+  }
+}
+
+.footer__copyright {
+  color: var(--ifm-font-color-base) !important;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+}

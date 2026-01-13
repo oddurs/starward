@@ -1,0 +1,27 @@
+// Navbar styles
+
+:root {
+  --ifm-navbar-background-color: #12161a;
+  --ifm-navbar-shadow: 0 1px 0 0 #2a3138;
+  --ifm-navbar-height: 60px;
+  --ifm-navbar-padding-horizontal: 1rem;
+}
+
+.navbar {
+  box-shadow: var(--ifm-navbar-shadow);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ifm-font-color-base);
+}
+
+.navbar__link {
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+
+  &--active {
+    color: var(--ifm-color-primary);
+  }
+}

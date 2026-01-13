@@ -1,0 +1,16 @@
+// Breadcrumb styles
+
+.breadcrumbs__link {
+  color: var(--ifm-font-color-base);
+
+  &:hover {
+    color: var(--ifm-color-primary);
+  }
+}
+
+// Last updated
+.theme-last-updated {
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--ifm-font-color-base);
+}

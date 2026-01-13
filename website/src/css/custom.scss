@@ -1,0 +1,46 @@
+/**
+ * astr0 documentation theme
+ * Tufte-inspired typography with Absent Contrast dark theme
+ *
+ * Modular SCSS architecture
+ */
+
+// =============================================================================
+// Configuration (variables, mixins - no CSS output)
+// =============================================================================
+@use 'config/colors';
+@use 'config/typography' as config-typography;
+@use 'config/spacing';
+@use 'config/mixins';
+
+// =============================================================================
+// Base styles (Infima overrides, global typography, elements)
+// =============================================================================
+@use 'base/infima-overrides';
+@use 'base/typography' as base-typography;
+@use 'base/elements';
+
+// =============================================================================
+// Components
+// =============================================================================
+@use 'components/navbar';
+@use 'components/sidebar';
+@use 'components/footer';
+@use 'components/toc';
+@use 'components/code-blocks';
+@use 'components/tables';
+@use 'components/admonitions';
+@use 'components/pagination';
+@use 'components/search';
+@use 'components/announcement-bar';
+@use 'components/breadcrumbs';
+
+// =============================================================================
+// Utilities
+// =============================================================================
+@use 'utilities/scrollbar';
+
+// =============================================================================
+// Pages
+// =============================================================================
+@use 'pages/landing';

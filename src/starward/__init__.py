@@ -4,7 +4,7 @@ starward — Astronomy Calculation Toolkit
 A professional astronomy calculation toolkit with a soul.
 """
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 __author__ = "starward contributors"
 
 # Convenient imports for library usage

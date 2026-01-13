@@ -79,6 +79,8 @@ class CaldwellCatalog:
             >>> print(c65.name)
             Sculptor Galaxy
         """
+        if not isinstance(number, int) or number < 1:
+            raise ValueError(f"Invalid Caldwell number: {number}")
         data = self._db.get_caldwell(number)
         if data is None:
             raise KeyError(f"C {number} is not in the catalog")

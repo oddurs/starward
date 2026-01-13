@@ -65,11 +65,24 @@ class TestHipparcosCatalog:
         assert sirius.name == "Sirius"
 
     def test_get_invalid_number_raises(self):
-        """get() raises KeyError for invalid number."""
-        with pytest.raises(KeyError):
-            Hipparcos.get(0)
+        """get() raises KeyError for number not in catalog."""
         with pytest.raises(KeyError):
             Hipparcos.get(999999)
+
+    def test_get_zero_raises_value_error(self):
+        """get() raises ValueError for zero."""
+        with pytest.raises(ValueError):
+            Hipparcos.get(0)
+
+    def test_get_negative_raises_value_error(self):
+        """get() raises ValueError for negative numbers."""
+        with pytest.raises(ValueError):
+            Hipparcos.get(-1)
+
+    def test_get_invalid_type_raises(self):
+        """get() raises error for non-integer input."""
+        with pytest.raises((ValueError, TypeError)):
+            Hipparcos.get("not a number")
 
     def test_get_by_name(self):
         """get_by_name() finds stars by common name."""

@@ -65,11 +65,24 @@ class TestICCatalog:
         assert "Horsehead" in ic434.name
 
     def test_get_invalid_number_raises(self):
-        """get() raises KeyError for invalid number."""
-        with pytest.raises(KeyError):
-            IC.get(0)
+        """get() raises KeyError for number not in catalog."""
         with pytest.raises(KeyError):
             IC.get(99999)
+
+    def test_get_zero_raises_value_error(self):
+        """get() raises ValueError for zero."""
+        with pytest.raises(ValueError):
+            IC.get(0)
+
+    def test_get_negative_raises_value_error(self):
+        """get() raises ValueError for negative numbers."""
+        with pytest.raises(ValueError):
+            IC.get(-1)
+
+    def test_get_invalid_type_raises(self):
+        """get() raises error for non-integer input."""
+        with pytest.raises((ValueError, TypeError)):
+            IC.get("not a number")
 
     def test_list_all_returns_objects(self):
         """list_all() returns IC objects."""

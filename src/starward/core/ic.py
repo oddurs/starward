@@ -79,6 +79,8 @@ class ICCatalog:
             >>> print(ic434.name)
             Horsehead Nebula
         """
+        if not isinstance(number, int) or number < 1:
+            raise ValueError(f"Invalid IC number: {number}")
         data = self._db.get_ic(number)
         if data is None:
             raise KeyError(f"IC {number} is not in the catalog")

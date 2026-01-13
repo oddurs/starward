@@ -78,6 +78,8 @@ class NGCCatalog:
             >>> print(ngc7000.name)
             North America Nebula
         """
+        if not isinstance(number, int) or number < 1:
+            raise ValueError(f"Invalid NGC number: {number}")
         data = self._db.get_ngc(number)
         if data is None:
             raise KeyError(f"NGC {number} is not in the catalog")

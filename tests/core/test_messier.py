@@ -74,13 +74,26 @@ class TestMessierCatalog:
         assert "Andromeda" in m31.name
 
     def test_get_invalid_number_raises(self):
-        """get() raises KeyError for invalid number."""
-        with pytest.raises(KeyError):
-            MESSIER.get(0)
+        """get() raises KeyError for number not in catalog."""
         with pytest.raises(KeyError):
             MESSIER.get(111)
         with pytest.raises(KeyError):
             MESSIER.get(999)
+
+    def test_get_zero_raises_value_error(self):
+        """get() raises ValueError for zero."""
+        with pytest.raises(ValueError):
+            MESSIER.get(0)
+
+    def test_get_negative_raises_value_error(self):
+        """get() raises ValueError for negative numbers."""
+        with pytest.raises(ValueError):
+            MESSIER.get(-1)
+
+    def test_get_invalid_type_raises(self):
+        """get() raises error for non-integer input."""
+        with pytest.raises((ValueError, TypeError)):
+            MESSIER.get("not a number")
 
     def test_list_all_returns_all_objects(self):
         """list_all() returns all 110 objects."""

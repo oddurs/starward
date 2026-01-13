@@ -108,7 +108,7 @@ def list_cmd(ctx, constellation: Optional[str], magnitude: Optional[float],
             'count': len(stars),
             'stars': [
                 {
-                    'hip_number': s.hip_number,
+                    'number': s.hip_number,
                     'name': s.name,
                     'bayer': s.bayer,
                     'ra_hours': s.ra_hours,
@@ -182,7 +182,7 @@ def show_cmd(ctx, identifier: str):
     if output_fmt == 'json':
         import json
         data = {
-            'hip_number': star.hip_number,
+            'number': star.hip_number,
             'name': star.name,
             'bayer': star.bayer,
             'flamsteed': star.flamsteed,
@@ -243,7 +243,7 @@ def search_cmd(ctx, query: str, limit: int):
             'count': len(results),
             'stars': [
                 {
-                    'hip_number': s.hip_number,
+                    'number': s.hip_number,
                     'name': s.name,
                     'bayer': s.bayer,
                     'magnitude': s.magnitude,

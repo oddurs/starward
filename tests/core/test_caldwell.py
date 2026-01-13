@@ -64,11 +64,24 @@ class TestCaldwellCatalog:
         assert obj.name == "Sculptor Galaxy"
 
     def test_get_invalid_number_raises(self):
-        """get() raises KeyError for invalid number."""
-        with pytest.raises(KeyError):
-            Caldwell.get(0)
+        """get() raises KeyError for number not in catalog."""
         with pytest.raises(KeyError):
             Caldwell.get(999)
+
+    def test_get_zero_raises_value_error(self):
+        """get() raises ValueError for zero."""
+        with pytest.raises(ValueError):
+            Caldwell.get(0)
+
+    def test_get_negative_raises_value_error(self):
+        """get() raises ValueError for negative numbers."""
+        with pytest.raises(ValueError):
+            Caldwell.get(-1)
+
+    def test_get_invalid_type_raises(self):
+        """get() raises error for non-integer input."""
+        with pytest.raises((ValueError, TypeError)):
+            Caldwell.get("not a number")
 
     def test_get_by_ngc(self):
         """get_by_ngc() finds objects by NGC cross-reference."""

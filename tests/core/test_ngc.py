@@ -65,11 +65,28 @@ class TestNGCCatalog:
         assert "North America" in ngc7000.name
 
     def test_get_invalid_number_raises(self):
-        """get() raises KeyError for invalid number."""
-        with pytest.raises(KeyError):
-            NGC.get(0)
+        """get() raises KeyError for number not in catalog."""
         with pytest.raises(KeyError):
             NGC.get(99999)
+
+    def test_get_zero_raises_value_error(self):
+        """get() raises ValueError for zero."""
+        with pytest.raises(ValueError):
+            NGC.get(0)
+
+    def test_get_negative_raises_value_error(self):
+        """get() raises ValueError for negative numbers."""
+        with pytest.raises(ValueError):
+            NGC.get(-1)
+        with pytest.raises(ValueError):
+            NGC.get(-100)
+
+    def test_get_invalid_type_raises(self):
+        """get() raises error for non-integer input."""
+        with pytest.raises((ValueError, TypeError)):
+            NGC.get("not a number")
+        with pytest.raises((ValueError, TypeError)):
+            NGC.get(3.14)
 
     def test_list_all_returns_objects(self):
         """list_all() returns NGC objects."""

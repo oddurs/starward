@@ -56,7 +56,10 @@ class MessierCatalog:
 
         Raises:
             KeyError: If number is not in the catalog
+            ValueError: If number is invalid (< 1)
         """
+        if not isinstance(number, int) or number < 1:
+            raise ValueError(f"Invalid Messier number: {number}")
         data = self._db.get_messier(number)
         if data is None:
             raise KeyError(f"M{number} is not in the Messier catalog")

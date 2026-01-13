@@ -78,6 +78,8 @@ class HipparcosCatalog:
             >>> print(sirius.name)
             Sirius
         """
+        if not isinstance(hip_number, int) or hip_number < 1:
+            raise ValueError(f"Invalid HIP number: {hip_number}")
         data = self._db.get_hipparcos(hip_number)
         if data is None:
             raise KeyError(f"HIP {hip_number} is not in the catalog")

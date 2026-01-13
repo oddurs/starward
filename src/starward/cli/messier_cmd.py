@@ -107,7 +107,7 @@ def list_cmd(ctx, obj_type: Optional[str], constellation: Optional[str],
                     'size_arcmin': o.size_arcmin,
                     'distance_kly': o.distance_kly,
                     'constellation': o.constellation,
-                    'ngc': o.ngc,
+                    'ngc_number': o.ngc,
                 }
                 for o in objects
             ]
@@ -167,7 +167,7 @@ def show_cmd(ctx, number: int):
             'size_arcmin': obj.size_arcmin,
             'distance_kly': obj.distance_kly,
             'constellation': obj.constellation,
-            'ngc': obj.ngc,
+            'ngc_number': obj.ngc,
             'description': obj.description,
         }
         click.echo(json.dumps(data, indent=2))

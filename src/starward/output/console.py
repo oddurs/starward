@@ -494,7 +494,7 @@ def print_messier_detail(
     table.add_row("Magnitude", f"[{mag_style}]{magnitude:.1f}[/{mag_style}]")
 
     table.add_row("Size", f"{size:.1f} arcmin")
-    table.add_row("Distance", distance if distance else "[dim]Unknown[/dim]")
+    table.add_row("Distance", distance if distance else "[dim]—[/dim]")
     table.add_row("Constellation", constellation)
     table.add_row("NGC", ngc if ngc else "[dim]—[/dim]")
 
@@ -627,7 +627,7 @@ def print_ngc_detail(
             mag_style = "dim"
         table.add_row("Magnitude", f"[{mag_style}]{magnitude:.1f}[/{mag_style}]")
     else:
-        table.add_row("Magnitude", "[dim]Unknown[/dim]")
+        table.add_row("Magnitude", "[dim]—[/dim]")
 
     # Size
     if size is not None:
@@ -637,9 +637,9 @@ def print_ngc_detail(
             size_str = f"{size:.1f} arcmin"
         table.add_row("Size", size_str)
     else:
-        table.add_row("Size", "[dim]Unknown[/dim]")
+        table.add_row("Size", "[dim]—[/dim]")
 
-    table.add_row("Distance", distance if distance else "[dim]Unknown[/dim]")
+    table.add_row("Distance", distance if distance else "[dim]—[/dim]")
     table.add_row("Constellation", constellation)
 
     if messier:
@@ -831,7 +831,7 @@ def print_ic_detail(
             mag_style = "dim"
         table.add_row("Magnitude", f"[{mag_style}]{magnitude:.1f}[/{mag_style}]")
     else:
-        table.add_row("Magnitude", "[dim]Unknown[/dim]")
+        table.add_row("Magnitude", "[dim]—[/dim]")
 
     # Size
     if size is not None:
@@ -841,9 +841,9 @@ def print_ic_detail(
             size_str = f"{size:.1f} arcmin"
         table.add_row("Size", size_str)
     else:
-        table.add_row("Size", "[dim]Unknown[/dim]")
+        table.add_row("Size", "[dim]—[/dim]")
 
-    table.add_row("Distance", distance if distance else "[dim]Unknown[/dim]")
+    table.add_row("Distance", distance if distance else "[dim]—[/dim]")
     table.add_row("Constellation", constellation)
 
     if ngc:
@@ -1313,7 +1313,7 @@ def print_caldwell_detail(
             mag_style = "dim"
         table.add_row("Magnitude", f"[{mag_style}]{magnitude:.1f}[/{mag_style}]")
     else:
-        table.add_row("Magnitude", "[dim]Unknown[/dim]")
+        table.add_row("Magnitude", "[dim]—[/dim]")
 
     # Size
     if size is not None:
@@ -1323,9 +1323,9 @@ def print_caldwell_detail(
             size_str = f"{size:.1f} arcmin"
         table.add_row("Size", size_str)
     else:
-        table.add_row("Size", "[dim]Unknown[/dim]")
+        table.add_row("Size", "[dim]—[/dim]")
 
-    table.add_row("Distance", distance if distance else "[dim]Unknown[/dim]")
+    table.add_row("Distance", distance if distance else "[dim]—[/dim]")
     table.add_row("Constellation", constellation)
 
     if ngc:

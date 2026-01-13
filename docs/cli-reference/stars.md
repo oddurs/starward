@@ -361,7 +361,7 @@ starward --json stars list --magnitude 1 | jq '.[].magnitude'
 
 - [Deep-Sky Catalogs](/docs/cli-reference/deep-sky) — Messier, NGC, IC, Caldwell
 - [Object Finder](/docs/cli-reference/finder) — Cross-catalog search including stars
-- [Visibility](/docs/cli-reference/reference#vis) — General visibility calculations
+- [Visibility Commands](/docs/cli-reference/reference#stars-altitude--rise--transit--set) — Rise, set, transit calculations
 
 ---
 

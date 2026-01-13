@@ -62,7 +62,7 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Structured data for search engines
+  // Structured data for search engines and favicons
   headTags: [
     {
       tagName: 'script',
@@ -81,6 +81,22 @@ const config: Config = {
           priceCurrency: 'USD',
         },
       }),
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'apple-touch-icon', sizes: '180x180', href: '/img/apple-touch-icon.png' },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/img/favicon-32x32.png' },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/img/favicon-16x16.png' },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'manifest', href: '/site.webmanifest' },
     },
   ],
 

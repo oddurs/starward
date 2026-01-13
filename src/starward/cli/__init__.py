@@ -56,7 +56,7 @@ class AliasedGroup(click.Group):
 @click.group(cls=AliasedGroup)
 @click.option('--verbose', '-v', is_flag=True, help='Show calculation steps')
 @click.option('--json', 'json_output', is_flag=True, help='Output in JSON format')
-@click.option('--output', '-o', type=click.Choice(['plain', 'json', 'latex']), default='plain', help='Output format')
+@click.option('--output', '-o', type=click.Choice(['plain', 'json', 'rich', 'latex']), default='plain', help='Output format')
 @click.option('--precision', '-p', 
               type=click.Choice(['compact', 'display', 'standard', 'high', 'full']),
               default='standard',
@@ -117,23 +117,8 @@ main.add_command(planets_group)
 @main.command()
 def about():
     """Show information about starward."""
-    click.echo(f"""
-    ╭───────────────────────────────────────╮
-    │    __                                 │
-    │   (_  _|_  _. ._     .  _. ._ _|      │
-    │   __)(  |_(_| |  \\)\\/ (_| | (_|       │
-    │                                       │
-    │     Astronomy Calculation Toolkit     │
-    │     ─────────────────────────────     │
-    │                                       │
-    │     Version: {__version__:<25}│
-    │     License: MIT                      │
-    │                                       │
-    │     "Per aspera ad astra"             │
-    │     Through hardships to the stars    │
-    │                                       │
-    ╰───────────────────────────────────────╯
-    """)
+    from starward.output.console import print_about_banner
+    print_about_banner(__version__)
 
 
 if __name__ == '__main__':

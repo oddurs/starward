@@ -100,14 +100,63 @@ class JSONFormatter(Formatter):
 
 class RichFormatter(Formatter):
     """Rich console formatter with colors and styling."""
-    
+
     def __init__(self, show_verbose: bool = False):
         self.show_verbose = show_verbose
-    
+
     def format(self, result: Result) -> str:
-        # For now, delegate to plain formatter
-        # TODO: Add rich console output
-        return PlainFormatter(self.show_verbose).format(result)
+        """
+        Format using Rich - returns empty string as Rich prints directly.
+
+        Note: Unlike other formatters, RichFormatter prints directly to console
+        and returns an empty string. This is because Rich manages its own
+        console output for proper styling.
+        """
+        from starward.output.console import (
+            console, print_result_panel, print_verbose_steps,
+            styled_value, COLORS
+        )
+        from rich.table import Table
+        from rich import box
+
+        # Build data dict for the panel
+        data = {}
+
+        # Add main result
+        main_value = result.value
+        if result.unit:
+            main_value = f"{result.value} {result.unit}"
+
+        if result.label:
+            data[result.label] = str(main_value)
+        else:
+            data["Result"] = str(main_value)
+
+        # Add extra info
+        for key, value in result.extra.items():
+            # Style altitude/visibility values
+            if 'altitude' in key.lower() or 'visible' in key.lower():
+                try:
+                    num = float(str(value).replace('°', ''))
+                    data[key] = styled_value(value, positive_threshold=0)
+                except (ValueError, TypeError):
+                    data[key] = str(value)
+            else:
+                data[key] = str(value)
+
+        # Print the panel
+        print_result_panel(
+            title=result.label or "Result",
+            data=data,
+            border_style="cyan",
+        )
+
+        # Print verbose steps if enabled
+        if self.show_verbose and result.verbose:
+            print_verbose_steps(result.verbose)
+
+        # Return empty string since we printed directly
+        return ""
 
 
 class LaTeXFormatter(Formatter):

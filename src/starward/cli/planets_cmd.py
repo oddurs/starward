@@ -102,6 +102,25 @@ def position(ctx, planet_name: str, jd: Optional[float]):
         if vctx:
             data['steps'] = vctx.to_dict()
         click.echo(json.dumps(data, indent=2))
+    elif output_fmt == 'rich':
+        from starward.output.console import print_planet_position
+        dt = jd_val.to_datetime()
+        symbol = PLANET_SYMBOLS.get(planet, "")
+        print_planet_position(
+            symbol=symbol,
+            name=planet.value,
+            time_str=dt.strftime('%Y-%m-%d %H:%M:%S'),
+            jd=jd_val.jd,
+            ra=pos.ra.format_hms(),
+            dec=pos.dec.format_dms(),
+            distance_au=pos.distance_au,
+            helio_distance=pos.helio_distance,
+            magnitude=pos.magnitude,
+            elongation=pos.elongation.degrees,
+            illumination=pos.illumination,
+            angular_diameter=pos.angular_diameter.degrees * 3600,
+            vctx=vctx,
+        )
     else:
         dt = jd_val.to_datetime()
         symbol = PLANET_SYMBOLS.get(planet, "")
@@ -159,6 +178,31 @@ def all_cmd(ctx, jd: Optional[float]):
         if vctx:
             data['steps'] = vctx.to_dict()
         click.echo(json.dumps(data, indent=2))
+    elif output_fmt == 'rich':
+        from starward.output.console import print_all_planets_table
+        dt = jd_val.to_datetime()
+        planets_data = []
+        for planet in Planet:
+            pos = positions[planet]
+            symbol = PLANET_SYMBOLS.get(planet, " ")
+            dec = pos.dec.format_dms()
+            if pos.dec.degrees >= 0:
+                dec = " " + dec
+            planets_data.append({
+                'symbol': symbol,
+                'name': planet.value,
+                'ra': pos.ra.format_hms(),
+                'dec': dec,
+                'distance': pos.distance_au,
+                'magnitude': pos.magnitude,
+                'elongation': pos.elongation.degrees,
+            })
+        print_all_planets_table(
+            time_str=dt.strftime('%Y-%m-%d %H:%M:%S'),
+            jd=jd_val.jd,
+            planets_data=planets_data,
+            vctx=vctx,
+        )
     else:
         dt = jd_val.to_datetime()
         click.echo(f"""

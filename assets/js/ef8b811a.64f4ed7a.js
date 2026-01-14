@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkstarward_docs=globalThis.webpackChunkstarward_docs||[]).push([[8947],{6600(s){s.exports=JSON.parse('{"authors":[{"name":"Oddur Sigurdsson","title":"Creator of starward","url":"https://github.com/oddurs","imageURL":"https://github.com/oddurs.png","key":"oddur","page":null,"count":5}]}')}}]);

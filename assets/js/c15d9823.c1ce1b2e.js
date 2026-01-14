@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkstarward_docs=globalThis.webpackChunkstarward_docs||[]).push([[8146],{9328(a){a.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":5,"blogDescription":"Release notes and updates for starward","blogTitle":"starward Blog"}}')}}]);

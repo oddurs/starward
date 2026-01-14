@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkstarward_docs=globalThis.webpackChunkstarward_docs||[]).push([[8121],{8070(a){a.exports=JSON.parse('{"tags":[{"label":"release","permalink":"/blog/tags/release","count":5},{"label":"testing","permalink":"/blog/tags/testing","count":1},{"label":"documentation","permalink":"/blog/tags/documentation","count":1}]}')}}]);

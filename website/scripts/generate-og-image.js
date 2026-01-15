@@ -92,12 +92,14 @@ async function generateOGImage() {
     console.log(`OG image saved to: ${OUTPUT_PATH}`);
 
   } finally {
-    // Clean up server
-    server.kill('SIGTERM');
+    // Clean up server - kill entire process tree
+    server.kill('SIGKILL');
   }
 }
 
-generateOGImage().catch(err => {
-  console.error('Failed to generate OG image:', err);
-  process.exit(1);
-});
+generateOGImage()
+  .then(() => process.exit(0))
+  .catch(err => {
+    console.error('Failed to generate OG image:', err);
+    process.exit(1);
+  });
